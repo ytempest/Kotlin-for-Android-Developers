@@ -50,4 +50,20 @@ class ForecastListAdapter(private val weekForecast: ForecastList) :
             }
         }
     }
+
+    // 这种写法效果与上面一样的
+//    class ViewHolder(private val containerView: View, private val itemClick: ((Forecast) -> Unit)?)
+//        : RecyclerView.ViewHolder(containerView) {
+//
+//        fun bindForecast(forecast: Forecast) {
+//            with(forecast) {
+//                Picasso.with(itemView.ctx).load(iconUrl).into(containerView.icon)
+//                containerView.dateText.text = date.toDateString()
+//                containerView.descriptionText.text = description
+//                containerView.maxTemperature.text = "${high}º"
+//                containerView.minTemperature.text = "${low}º"
+//                itemView.setOnClickListener { itemClick?.invoke(this) }
+//            }
+//        }
+//    }
 }
