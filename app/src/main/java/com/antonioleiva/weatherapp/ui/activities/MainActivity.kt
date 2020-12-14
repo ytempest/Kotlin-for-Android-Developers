@@ -34,11 +34,11 @@ class MainActivity : CoroutineScopeActivity(), ToolbarManager {
 
     private fun loadForecast() = launch {
         val result = RequestForecastCommand(zipCode).execute()
-        val adapter = ForecastListAdapter(result) {
-            startActivity<DetailActivity>(DetailActivity.ID to it.id,
-                    DetailActivity.CITY_NAME to result.city)
-        }
-        forecastList.adapter = adapter
+        forecastList.adapter = ForecastListAdapter(result)
+                .setItemClick {
+                    startActivity<DetailActivity>(DetailActivity.ID to it.id,
+                            DetailActivity.CITY_NAME to result.city)
+                }
         toolbarTitle = "${result.city} (${result.country})"
     }
 }
